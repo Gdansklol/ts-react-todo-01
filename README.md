@@ -48,6 +48,21 @@ You will also see any lint errors in the console.
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
+## TypeScript Documentation
+- link : (https://www.typescriptlang.org/)
+
+1. click Docs and then Handbook
+
+2. click ig  The Basics, Everyday Types etc
+
+
+### import a Google font 
+
+1. neucha font
+
+link : (https://fonts.google.com/specimen/Neucha)
 
 
 ## Learn More
+
+- link: (https://www.youtube.com/watch?v=FJDVKeh7RJI&t=4521s)
