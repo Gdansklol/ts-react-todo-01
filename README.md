@@ -74,3 +74,5 @@ link : (https://fonts.google.com/specimen/Neucha)
 
 
 - rafce ,  extention which is ES7 React/Redux/GraphQL/React-Nativ (dsznajder)
+
+- create components/styles.css

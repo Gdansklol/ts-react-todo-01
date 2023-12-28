@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
+import "./styles.css"
 
 const InputFeild = () => {
   return (
-    <div>InputFeild</div>
+    <form className="input">
+        <input type="input" placeholder='Enter a todo task' className='input__box'/>
+        <button className='input__submit' type='submit'>Go</button>
+    </form>
   )
 }
 
-export default InputFeild
+export default InputFeild;
