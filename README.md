@@ -1,4 +1,4 @@
-# Getting Started with Create React App and typescript
+# TODO LIST  Getting Started with Create React App and typescript.
 
 1. ws > git clone + https://github.com/000/000 .git
 
@@ -36,15 +36,6 @@ You will also see any lint errors in the console.
 
 1. Remove few of the files that do not need in this project
 2. and then remove everyting inside of App.tsx
-
-### `npm test`
-
-
-
-### `npm run build`
-
-
-### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
