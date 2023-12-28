@@ -66,3 +66,11 @@ link : (https://fonts.google.com/specimen/Neucha)
 ## Learn More
 
 - link: (https://www.youtube.com/watch?v=FJDVKeh7RJI&t=4521s)
+
+
+### create new folder , components 
+- inside components create InputFeild.tsx 
+- 21:26 create <InputFeild />
+
+
+- rafce ,  extention which is ES7 React/Redux/GraphQL/React-Nativ (dsznajder)
