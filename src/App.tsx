@@ -9,8 +9,9 @@ const [todo, setTodo] = useState<string>("");
 const [todos, setTodos]= useState<Todo[]>([])
 
 
-const handleAdd = ()=> {
-  
+const handleAdd = (e : React.FormEvent)=> {
+ e.preventDefault();
+ 
 }
 
 console.log(todo);
@@ -18,7 +19,7 @@ console.log(todo);
   return(
     <div className="App">
       <span className="heading">ToDo Task</span>
-      <InputFeild  todo={todo} setTodo={setTodo}/>
+      <InputFeild  todo={todo} setTodo={setTodo} handleAdd={handleAdd}/>
     </div>
   )
 }
