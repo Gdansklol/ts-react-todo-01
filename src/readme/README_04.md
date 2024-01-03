@@ -103,12 +103,136 @@ get rid of this background shadown( ex blu color bg shadow)
 - 37:53 
 So for that, we are going use a React hook
 called useRef.
-So let's see how we use useRef with typeScript.
+So let's see how we use *useRef*
+with typeScript.
 First of all, we are supposed to add in handle submit.
+So let me just write handleSubmit like this.
 
-  So let me just write handleSubmit like this.
+- 38: 03 
+For now, let me just render all of those todos 
+over here( under Enter a task input)
+ ` todos.map`
+ so that we can see all of them.
 
-- 
+ So like, you can see all of these of do as todos are
+ beginning to apper over here. 
+
+```tsx
+InputFeild.tsx
+
+
+ const InputFeild: React.FC<Props> = ({todo, setTodo,handleAdd} ) => {
+      const inputRef = useRef<HTMLInputElement>(null);
+
+  return (
+    <form 
+    className="input"
+    onSubmit={(e) => {
+      handleAdd(e);
+      inputRef.current?.blur();
+    }}>
+
+```
+----
+
+```tsx
+App.tsx
+
+return(
+
+    {/*TodoList/> */}
+ {todos.map((t)=> (
+    <li>{t.todo} </li>
+ ))}
+
+
+)
+```
+
+- App.tsx
+
+```tsx
+import React,{useState} from "react";
+import "./App.css";
+import InputFeild from "./components/InputFeild";
+
+import {Todo} from "./model"
+
+const App: React.FC = ()=> {
+// const [todo, setTodo] = useState<string | number>("");
+const [todo, setTodo] = useState<string>("");
+const [todos, setTodos] = useState<Array<Todo>>([]);
+
+const handleAdd = (e : React.FormEvent)=> {
+ e.preventDefault();
+
+  if (todo) {
+    setTodos([...todos, {id: Date.now(), todo, isDone:false}])
+    setTodo("");
+  }
+};
+
+console.log(todo);
+
+console.log(todos)
+
+  return(
+    <div className="App">
+      <span className="heading">ToDo Task</span>
+      <InputFeild  todo={todo} setTodo={setTodo} handleAdd={handleAdd}/>
+
+      {/* <TodoList /> */}
+      {todos.map((t)=>(
+        <li>{t.todo}</li>
+      ))}
+    </div>
+  )
+}
+
+export default App;
+
+```
+
+
+- InputField.tsx
+
+```tsx
+import React,{useRef} from 'react';
+import "./styles.css"
+
+interface Props {
+    todo: string;
+    setTodo: React.Dispatch<React.SetStateAction<string>>;
+    handleAdd :(e: React.FormEvent)=> void;
+}
+
+// const InputFeild = ({todo, setTodo} : Props) => {
+    const InputFeild: React.FC<Props> = ({todo, setTodo,handleAdd} ) => {
+      const inputRef = useRef<HTMLInputElement>(null);
+
+  return (
+    <form 
+    className="input"
+    onSubmit={(e) => {
+      handleAdd(e);
+      inputRef.current?.blur();
+    }}>
+        <input 
+        ref={inputRef}
+         type="input"
+         value={todo}
+         onChange={(e) => setTodo(e.target.value)}
+         placeholder='Enter a todo task'
+         className='input__box'/>
+        <button className='input__submit' type='submit'>
+            Go
+        </button>
+    </form>
+  )
+}
+
+export default InputFeild;
+```
 
 
 
