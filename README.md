@@ -30,16 +30,11 @@ npm install --save typescript @types/node @types/react @types/react-dom @types/j
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-
 1. Remove few of the files that do not need in this project
 2. and then remove everyting inside of App.tsx
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-## TypeScript Documentation
+## `TypeScript Documentation`
 - link : (https://www.typescriptlang.org/)
 
 1. click Docs and then Handbook
@@ -52,11 +47,6 @@ You will also see any lint errors in the console.
 1. neucha font
 
 link : (https://fonts.google.com/specimen/Neucha)
-
-
-## Learn More
-
-- link: (https://www.youtube.com/watch?v=FJDVKeh7RJI&t=4521s)
 
 
 ### create new folder , components 
