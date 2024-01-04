@@ -5,7 +5,7 @@ we are going to create a TodoList component,
 
 go inside of components folder and
 create a new file called
-TodoList.ts
+TodoList.tsx
 
 ```tsx
 // rafce
@@ -203,10 +203,150 @@ export default TodoList;
 
 ```tsx
 {todos.map(todo =>(
-    
+
 ))}
 ```
 
+And let's inside of it, 
+let's just create all of this, 
+the card component, 
+
+- 43: 22 
+
+let's create a separate component of 
+this card itself.
+
+So I'm going to create a separate 
+component called *SingelTodo*.
+ So for now, let me just add a list over here.
+
+<li>{todo.todo}</li>
+
+- stying
+
+- 43:45
+
+
+.todos {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    flex-wrap: wrap;
+}
+
+- 44:14 
+So let's go in and create that single todo component of this. 
+let's create a singletodo component of this.
+
+ *components/ SingleTodo.tsx*
+
+rafce for  generate react component 
+
+
+- GUI 
+SingleTodo.tsx
+
+- 44:27
+Now, if we go back to our app,
+you can see we have few icons over here, 
+for example, this *edit icon*, this 
+*delete icon* and this tick mark or *complete icon*.
+
+So for this we are using a library called,
+`React Icons`
+
+So if you google search react icons, you're going to
+find this result over here. 
 And 
 
- 
+
+link : (https://react-icons.github.io/react-icons/)
+
+### Install react-icons library 
+
+- 44:50
+Let's just install this library
+
+```bash
+npm install react-icons --save
+
+npm install react-icons 
+```
+
+- 45:00
+
+Now meanwhile, installing, let's go to
+react icons and search and edit icon.
+So you can see this is the edit icon 
+that we are going to use.
+
+search a delete icon. 
+and just like that, a tick, or done, maybe,
+yeah, there we go, this is the *done icon*. 
+
+- 45:26 
+So what are the things that we are going to send
+to this SingleTodo component. 
+
+- So let's go to our TodoList and first of all, 
+import this over here. 
+
+- before
+```tsx
+TodoList.tsx
+
+return (
+    <div className='todos'>
+        {todos.map((todo) =>(
+            <li>{todo.todo}</li>
+        ))}
+    </div>
+  )
+}
+
+```
+- after
+```tsx
+TodoList.tsx
+
+return(
+    <div className="todos">
+    {todos.map((todo)=>(
+        <SingleTodo />
+    ))}
+    </div>
+)
+
+```
+
+- 45:39 
+So we're gonna send it this todo
+obviously, so todo.
+ ex todo={todo}
+
+TodoList.tsx
+
+<SingleTodo todo={todo}>
+
+And since we are mapping it, so we are
+going to provide it the `key`
+key={todo.id}
+
+And we're gonna send it all todos. 
+So all of todos are 
+going to be neede for deleting the stuff like that.
+```tsx
+todos={todos}
+```
+
+- 46:05
+Now, it's going to give us the error, 
+because we haven't set the Props yet, obviously.
+So 
+*setTodos={setTodos}*
+
+And we have to deal with some errors,
+
+- 46:15 
+
+
