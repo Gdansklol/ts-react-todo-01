@@ -24,7 +24,7 @@ console.log(todos)
 
   return(
     <div className="App">
-      <span className="heading">ToDo Task</span>
+      <span className="heading">Båmi's ToDo Task 📙 👌🎍😍</span>
       <InputFeild  todo={todo} setTodo={setTodo} handleAdd={handleAdd}/>
 
       <TodoList todos={todos} setTodos={setTodos}/>
