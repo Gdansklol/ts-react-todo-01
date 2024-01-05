@@ -12,9 +12,8 @@ type Props = {
 
 const SingleTodo = ({todo, todos, setTodos}: Props) => {
   const [edit, setEdit] =  useState<boolean>(false);
-  const [editTodo, setEditTodo] = useState<string>("");
+  const [editTodo, setEditTodo] = useState<string>(todo.todo);
  
-
   const handleDone = (id:number) => {
     setTodos(todos.map((todo)=> 
     todo.id === id ? {...todo, isDone:
@@ -29,22 +28,24 @@ const SingleTodo = ({todo, todos, setTodos}: Props) => {
 
   return (
     <form className="todos__single">
-      {
-        todo.isDone ? (
+      {todo.isDone ? (
           <s className="todos__single--text">
           {todo.todo}
-      </s>
-
-        ):(
+          </s>
+        ) : (
           <span className="todos__single--text">
           {todo.todo}
-      </span>
-        )
-      }
-    
+          </span>
+        )}
 
         <div>
-            <span className="icon">
+            <span className="icon"
+            onClick={()=> {
+              if(!edit && !todo.isDone){
+                setEdit(!edit);
+              }
+            }}
+            >
             <AiFillEdit />
             </span>
             <span className="icon" onClick={()=> handleDelete(todo.id)}>

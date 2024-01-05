@@ -31,3 +31,26 @@
 3.  const [edit, setEdit] =  useState<boolean>(false);
     const [editTodo, setEditTodo] = useState<string>("");
 
+4. it's going to contain the todo.todo instead of empty ""
+  const [editTodo, setEditTodo] = useState<string>(todo.todo);
+
+- Switch between the Edit Modes.
+So if I go and to this, currently, it's not going to work.
+
+So we have to add an input field over here and
+**conditional** over here.
+
+  {
+        todo.isDone ? (
+          <s className="todos__single--text">
+          {todo.todo}
+          </s>
+        ) : (
+          <span className="todos__single--text">
+          {todo.todo}
+          </span>
+        )
+      }
+
+So let's add the *conditional* 
+
