@@ -31,3 +31,14 @@
 3.  const [edit, setEdit] =  useState<boolean>(false);
     const [editTodo, setEditTodo] = useState<string>("");
 
+- git checkout main
+ or 
+ - git switch main
+
+
+Switch between the Edit Modes. So if I go and to this, currently, it's not going to work.
+So we have to add an input field over here and conditional over here.
+
+{ todo.isDone ? ( {todo.todo} ) : ( {todo.todo} ) }
+
+So let's add the conditional
