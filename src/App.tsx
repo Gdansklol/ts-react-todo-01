@@ -2,12 +2,17 @@ import React,{useState} from "react";
 import "./App.css";
 import InputFeild from "./components/InputFeild";
 import TodoList from "./components/TodoList"
-import {Todo} from "./model"
+import {Todo} from "./model";
+import {DragDropContext}from "react-beautiful-dnd";
+
 
 const App: React.FC = ()=> {
 // const [todo, setTodo] = useState<string | number>("");
 const [todo, setTodo] = useState<string>("");
-const [todos, setTodos] = useState<Array<Todo>>([]);
+// const [todos, setTodos] = useState<Array<Todo>>([]);
+const [todos, setTodos] = useState<Todo[]>([]);
+const [completedTodos, setCompletedTodos]= useState<Todo[]>([])
+
 
 const handleAdd = (e : React.FormEvent)=> {
  e.preventDefault();
@@ -23,13 +28,20 @@ console.log(todo);
 console.log(todos)
 
   return(
-    <div className="App">
+    <DragDropContext onDragEnd={()=>{}}>
+       <div className="App">
       <span className="heading"> Earthlings' ToDo Task 📙 👌🎍😍</span>
       <InputFeild  todo={todo} setTodo={setTodo} handleAdd={handleAdd}/>
 
-      <TodoList todos={todos} setTodos={setTodos}/>
-  
+      <TodoList 
+        todos={todos} 
+        setTodos={setTodos}
+        completedTodos={completedTodos}
+        setCompletedTodos={setCompletedTodos}
+        />
     </div>
+    </DragDropContext>
+   
   )
 }
 

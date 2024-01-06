@@ -48,6 +48,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 link : (https://fonts.google.com/specimen/Neucha)
 
+### Install react-icons
+
+```bash
+npm install react-icons
+
+```
 
 ### create new folder , components 
 - inside components create InputFeild.tsx 
@@ -73,4 +79,15 @@ const SingleTodo = ({todo, todos, setTodos}: Props) => {
 ```
 
 ### Drag and Drop function
+### Install react-beautiful-dnd
+-1:13
 
+```bash
+npm i react-beautiful-dnd
+```
+doc link : (https://www.npmjs.com/package/react-beautiful-dnd)
+
+```bash
+npm install --save @types/react-beautiful-dnd
+npm i @types/react-beautiful-dnd
+```

@@ -1,7 +1,8 @@
-import React,{useState,useRef} from 'react';
-import {Todo} from "../model";
+import React,{useEffect,useState} from 'react';
+import { useRef } from "react";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
+import { Todo } from "../model";
 import "./styles.css";
 
 type Props = {
@@ -68,9 +69,9 @@ const SingleTodo = ({todo, todos, setTodos}: Props) => {
             <span className="icon" onClick={()=> handleDelete(todo.id)}>
             <AiFillDelete />
             </span>
-            <span className="icon" onClick={()=> handleDone(todo.id)} >
-            <MdDone />
-            </span>
+            <span className="icon" onClick={() => handleDone(todo.id)}>
+          <MdDone />
+        </span>
         </div>
     </form>
   )
