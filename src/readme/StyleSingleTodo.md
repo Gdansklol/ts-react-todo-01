@@ -118,12 +118,95 @@ export default ReducerExample;
 ```
 
 - 1:04
+provide it a reducer. 
+So let's say
+
+const [state, dispatch] = useReducer(TodoReducer,[])
+
+and it's going to return us the state and dispatch.
+
+Now let's create this TodoReducer.
+
+```tsx
+const TodoReducer = (state: Todo[], action) => {}
+```
+
+- | (Alt+7 or option + 7)
+
+- Define Action
+type  and payload 
+```ts
+type Actions = 
+| {type:"add";payload:string}
+| {type:"remove"}
+| {type:"done"}
+
+```
+payload : number
+
+(number of id )
+
+```ts
+type Actions = 
+| {type:"add"; payload:string}
+| {type:"remove"; payload:number}
+| {type:"done"; payload:number}
+
+```
+and assign it to over here.
+( , action: Actions)
+
+- 1:06:36
+create this todoReducer, So inside of it,
+we're gonna have a **switch case**.
+
+- understand how this works
+, integrate TypeScript inside of it.
 
 
+```ts
+export interface Todo {
+    id : number;
+    todo: string;
+    isDone:boolean;
+}
+
+type Actions = 
+| {type:"add"; payload:string}
+| {type:"remove"; payload:number}
+| {type:"done"; payload:number}
 
 
+const TodoReducer = (state: Todo[], action:Actions) =>{
+    switch (action.type){
+        case "add":
+            return [
+                ...state,
+                {id:Date.now(), todo: action.payload, isDone:false}
+            ];
+        case 'remove':
+            return state.filter((todo)=>todo.id !==action.payload)
+        case 'done':
+            return state.map((todo)=>
+            todo.id !== action.payload ? {...todo, isDone: !todo}
+            )
+            default;
+            return state;
+    }
+};
 
+import {useReducer} from 'react'
+const ReducerExample= () => {
 
+    const [state, dispatch] = useReducer(reducer, [])
+
+  return (
+  </div>
+  )
+}
+
+export default ReducerExample;
+```
 
 
 

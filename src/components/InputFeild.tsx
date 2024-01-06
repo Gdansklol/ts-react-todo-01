@@ -23,7 +23,7 @@ interface Props {
          type="input"
          value={todo}
          onChange={(e) => setTodo(e.target.value)}
-         placeholder='Enter a todo task'
+         placeholder='Earthling? Enter a todo task'
          className='input__box'/>
         <button className='input__submit' type='submit'>
             Go
