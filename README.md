@@ -57,3 +57,20 @@ link : (https://fonts.google.com/specimen/Neucha)
 - rafce ,  extention which is ES7 React/Redux/GraphQL/React-Nativ (dsznajder)
 
 - create components/styles.css
+
+### useState
+
+```tsx
+SingleTodo.tsx
+
+const SingleTodo = ({todo, todos, setTodos}: Props) => {
+  const [edit, setEdit] =  useState<boolean>(false);
+  // const [editTodo, setEditTodo] = useState<string>("");
+  const [editTodo, setEditTodo] = useState<string>(todo.todo);
+ 
+}
+
+```
+
+### Drag and Drop function
+
