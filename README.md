@@ -78,6 +78,18 @@ const SingleTodo = ({todo, todos, setTodos}: Props) => {
 
 ```
 
+### useEffect
+
+```tsx
+SingleTodo.tsx
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [edit]);
+
+```
+
 ### Drag and Drop function
 ### Install react-beautiful-dnd
 -1:13
@@ -91,3 +103,7 @@ doc link : (https://www.npmjs.com/package/react-beautiful-dnd)
 npm install --save @types/react-beautiful-dnd
 npm i @types/react-beautiful-dnd
 ```
+
+#### logic for do not input levitating when drag it
+
+**{provided.placeholder}**
