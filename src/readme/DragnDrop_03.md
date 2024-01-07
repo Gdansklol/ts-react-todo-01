@@ -116,3 +116,250 @@ const onDragEnd = (result: DropResult) => {
 export default App;
 
 ```
+
+- 1:20
+index
+// rafce
+
+import React from 'react';
+import {Todo} from "../model";
+import "./styles.css";
+import SingleTodo from "./SingleTodo";
+import { Droppable } from 'react-beautiful-dnd';
+
+interface Props {
+    todos: Todo[];
+    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+    completedTodos: Todo[];
+    setCompletedTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  }
+
+const TodoList:React.FC<Props> = ({
+  todos,
+  setTodos,
+  completedTodos,
+  setCompletedTodos,
+}) => {
+  return (
+    
+    <div className='container'>
+      <Droppable droppableId='TodosList'>
+        {(provided) => (
+            <div 
+            className="todos"
+            ref={provided.innerRef}
+            {...provided.innerRef}
+            >
+        <span className="todos__heading">
+          Active Tasks
+        </span>
+        {todos.map((todo, index)=> (
+          <SingleTodo 
+          index={index}
+          todo={todo}
+          todos={todos}
+          key={todo.id}
+          setTodos={setTodos}
+          />
+        ))}
+            </div>
+          )}
+      </Droppable>
+      <Droppable droppableId='TodosRemove'>
+        {
+          (provided)=> (
+            <div 
+            className="todos remove"
+            ref={provided.innerRef}
+            {...provided.innerRef}
+            >
+            <span className="todos__heading">
+              Complete Tasks
+            </span>
+            { completedTodos.map((todo, index)=> (
+              <SingleTodo 
+              index = {index}
+              todo={todo}
+              todos={ completedTodos}
+              key={todo.id}
+              setTodos={setCompletedTodos}
+              />
+            ))}
+            </div>
+          )
+        }
+      </Droppable>
+       
+    </div>
+  );
+};
+
+export default TodoList;
+
+-  1:20:42
+- update ver
+
+```tsx
+import React,{useEffect,useState} from 'react';
+import { useRef } from "react";
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { MdDone } from "react-icons/md";
+import { Todo } from "../model";
+import "./styles.css";
+
+type Props = {
+    index: number;
+    todo : Todo;
+    todos : Todo[];
+    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+};
+
+const SingleTodo = ({index,todo, todos, setTodos}: Props) => {
+  const [edit, setEdit] =  useState<boolean>(false);
+  // const [editTodo, setEditTodo] = useState<string>("");
+  const [editTodo, setEditTodo] = useState<string>(todo.todo);
+ 
+
+  const handleDone = (id:number) => {
+    setTodos(todos.map((todo)=> 
+    todo.id === id ? {...todo, isDone:
+    !todo.isDone}:todo
+     )
+    );
+  };
+
+  const handleDelete =(id:number) => {
+    setTodos(todos.filter((todo)=> todo.id !== id))
+  };
+
+  const handleEdit = (e:React.FormEvent, id:number) => {
+    e.preventDefault();
+
+    setTodos(
+      todos.map((todo)=>(
+        todo.id===id?{...todo,todo:editTodo}: todo
+      ))
+    )
+        setEdit(false);
+  };
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  return (
+    <form className="todos__single" onSubmit={(e) => handleEdit(e, todo.id)}>
+      {edit? (
+        <input 
+        value={editTodo}
+        onChange={(e)=> setEditTodo(e.target.value)}
+        className="todos__single--text"
+        />
+      ) :  todo.isDone ? (
+          <s className="todos__single--text">{todo.todo}</s>
+      ):(
+          <span className="todos__single--text">{todo.todo}</span>
+        )}
+    
+        <div>
+            <span className="icon"
+             onClick={()=> {
+              if(!edit && !todo.isDone){
+                setEdit(!edit)
+              }
+            }}
+          >
+            <AiFillEdit />
+            </span>
+            <span className="icon" onClick={()=> handleDelete(todo.id)}>
+            <AiFillDelete />
+            </span>
+            <span className="icon" onClick={() => handleDone(todo.id)}>
+          <MdDone />
+        </span>
+        </div>
+    </form>
+  )
+}
+
+export default SingleTodo;
+
+```
+---
+
+```tsx
+// rafce
+
+import React from 'react';
+import {Todo} from "../model";
+import "./styles.css";
+import SingleTodo from "./SingleTodo";
+import { Droppable } from 'react-beautiful-dnd';
+
+interface Props {
+    todos: Todo[];
+    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+    completedTodos: Todo[];
+    setCompletedTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  }
+
+const TodoList:React.FC<Props> = ({
+  todos,
+  setTodos,
+  completedTodos,
+  setCompletedTodos,
+}) => {
+  return (
+    
+    <div className='container'>
+      <Droppable droppableId='TodosList'>
+        {(provided) => (
+            <div 
+            className="todos"
+            ref={provided.innerRef}
+            {...provided.innerRef}
+            >
+        <span className="todos__heading">
+          Active Tasks
+        </span>
+        {todos.map((todo, index)=> (
+          <SingleTodo 
+          index={index}
+          todo={todo}
+          todos={todos}
+          key={todo.id}
+          setTodos={setTodos}
+          />
+        ))}
+            </div>
+          )}
+      </Droppable>
+      <Droppable droppableId='TodosRemove'>
+        {
+          (provided)=> (
+            <div 
+            className="todos remove"
+            ref={provided.innerRef}
+            {...provided.innerRef}
+            >
+            <span className="todos__heading">
+              Complete Tasks
+            </span>
+            { completedTodos.map((todo, index)=> (
+              <SingleTodo 
+              index = {index}
+              todo={todo}
+              todos={ completedTodos}
+              key={todo.id}
+              setTodos={setCompletedTodos}
+              />
+            ))}
+            </div>
+          )
+        }
+      </Droppable>
+       
+    </div>
+  );
+};
+
+export default TodoList;
+```
