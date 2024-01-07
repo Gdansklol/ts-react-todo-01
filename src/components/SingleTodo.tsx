@@ -78,4 +78,3 @@ const SingleTodo = ({todo, todos, setTodos}: Props) => {
 }
 
 export default SingleTodo;
-
